@@ -1,0 +1,38 @@
+================================================================================
+  RIDEMITRAA — पूरा ऐप चलाने के स्टेप्स (Windows)
+================================================================================
+
+1) Node.js इंस्टॉल हो (LTS) — https://nodejs.org/
+
+2) इस फोल्डर में टर्मिनल खोलें और चलाएँ:
+      npm install
+
+3) Firebase (ज़रूरी — बिना इसके login/ride काम नहीं करेंगे)
+   - https://console.firebase.google.com/ → New project
+   - Authentication → Email/Password ON
+   - Firestore → Create database
+   - Project settings → Your apps → Web app → config copy करें
+   - यहाँ `.env.local.example` को कॉपी करके `.env.local` बनाएँ और सभी
+     NEXT_PUBLIC_FIREBASE_* keys भरें
+   - Firestore → Rules → `firestore.rules` फाइल की कॉपी paste करें (या test mode)
+
+4) चलाएँ:
+      npm run dev
+   ब्राउज़र में खोलें:  http://localhost:3000
+
+   (या डबल-क्लिक: dev-open.bat — browser अपने आप खुलेगा)
+
+5) पहला यूज़र Sign up करें (ek rider, ek passenger — अलग email से test करें)
+   - Rider: Create ride
+   - Passenger: Search → Book → Ride page पर map + live location
+
+6) Health check (server चल रहा है तो):
+      http://localhost:3000/api/health
+
+7) Vercel पर deploy: GitHub push → Vercel import → same env vars add करें
+
+================================================================================
+  English summary
+================================================================================
+Copy `.env.local.example` → `.env.local`, add Firebase web config, run `npm run dev`.
+Open http://localhost:3000 — sign up, create ride (rider), book ride (passenger).
